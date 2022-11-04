@@ -13,6 +13,7 @@ function App() {
             <li>Contact</li>
           </ul>
         </div>
+        <span>jagoan neon</span>
       </div>
     </div>
   );
