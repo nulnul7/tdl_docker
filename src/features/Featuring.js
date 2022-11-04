@@ -1,9 +1,13 @@
 import React from 'react'
 
 const Featuring = () => {
-    console.log("oh yayaya");
+  console.log("oh yayaya");
   return (
-    <div>Featuring</div>
+    <div>
+      <b>Featuring</b>
+      <p>holaa yang disana</p>
+    </div>
+
   )
 }
 
