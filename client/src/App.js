@@ -1,20 +1,11 @@
-import './App.css';
+import './app.css';
+import Home from './pages/Home'
+
 
 function App() {
   return (
-    <div className="container">
-      Helo hola
-      <div className='wrapper'>
-        <div className='Logo'>Logo</div>
-        <div className='navBar'>
-          <ul>
-            <li>Home</li>
-            <li>Product</li>
-            <li>Contact</li>
-          </ul>
-        </div>
-        <span>jagoan neon</span>
-      </div>
+    <div className='App'>
+      <Home />
     </div>
   );
 }
