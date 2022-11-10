@@ -1,15 +1,15 @@
 import mongoose from "mongoose";
 
-const listTodoSchema = mongoose.Model({
+const listTodoSchema = mongoose.Schema({
     todo: {
         type: String,
         require: true
     },
-    date: {
+    dateline: {
         type: String,
         require: true
     },
-    isDone: {
+    isMust: {
         type: Boolean,
         default: false
     }
