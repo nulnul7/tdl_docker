@@ -1,9 +1,11 @@
 import React from 'react'
+import ListCard from './ListCard'
+import './content.css'
 
 const Content = () => {
   return (
     <div className='content'>
-        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deserunt magnam eum corporis maiores, animi similique? Laboriosam autem ipsum ducimus cupiditate, officia consequatur officiis soluta et quia dicta sequi? Excepturi, quo!
+      <ListCard date="2022 01 01" todo="Consider adding an error boundary to your tree to customize error handling behavior." priority={true}/>
     </div>
   )
 }
