@@ -9,7 +9,7 @@ const listTodoSchema = mongoose.Schema({
         type: String,
         require: true
     },
-    isMust: {
+    priority: {
         type: Boolean,
         default: false
     }
