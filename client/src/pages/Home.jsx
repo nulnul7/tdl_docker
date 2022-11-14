@@ -8,10 +8,12 @@ const Home = () => {
   return (
     <div className="appContainer">
       <div className='appWrapper'>
-            <div className='header'>List TO DO</div>
-            <div className='content'>                
-                <InputForm />
-                <Content />
+            <div className='header'>LISTS TO DO </div>
+            <div className='contentHome'>                
+                <InputForm className="iContent"/>
+                <div className="cContent">
+                  <Content />
+                </div>
             </div>
       </div>
     </div>
