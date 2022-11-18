@@ -11,7 +11,9 @@ const Home = () => {
             <div className='header'>LISTS TO DO </div>
             <div className='contentHome'>                
                 <InputForm className="iContent"/>
-                <Content className="cContent"/>
+                <div className="cContent">
+                  <Content />
+                </div>
             </div>
       </div>
     </div>

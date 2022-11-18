@@ -6,14 +6,14 @@
     font-size: 12px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
 }
 .iconsList{
     margin-left: auto;
     display: flex;
+    margin-right: -10px;
 }
 .iconDel, .iconEdit{
-    margin-right: 12px;
+    margin-right: 15px;
     position: relative;
     cursor: pointer;
 }
@@ -44,9 +44,10 @@
 }
 .date{
     width: 250px;
+    height: 25px;
     background-color: rgb(251, 232, 202);
     padding: 5px 0 5px 15px;
-    margin-left: -15px;
+    margin: 10px 0 10px -15px;
     font-size: 14px;
 }
 .todoList{
@@ -56,4 +57,5 @@
     margin-left: auto;
     color: blue;
     margin-right: 10px;
+    position: absolute;
 }
