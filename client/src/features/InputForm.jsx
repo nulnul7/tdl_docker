@@ -1,19 +1,23 @@
 import React, {useState} from 'react'
 import './inputForm.css'
+import axios from 'axios';
 
 const InputForm = () => {
     const [date, setDate] = useState('');
     const [todo, setTodo] = useState('');
     const [priority, setPriority] = useState(true)
 
+    const handleSubmit = async (e) => {
+        const dataTodo = {
+            dateline: date, todo, priority
+        }
+        try {
+            await axios.post('http://localhost:5501/5R2I/todo/add/',  dataTodo )
+            console.log('Submit 123', dataTodo );
 
-    // const handleChange = () => {
-    //     console.log('works 123');
-    // }
-
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        console.log('Submit 123', priority );
+        } catch (error) {
+            console.log(error);
+        }
         clearState();
     }
 

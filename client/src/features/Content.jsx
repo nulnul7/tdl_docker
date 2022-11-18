@@ -1,57 +1,67 @@
-import React, {useEffect, useState} from 'react'
-import ListCard from './ListCard'
-import './content.css'
-import {DBdummy} from '../Dummy'
+import axios from 'axios'
+import React, { useState } from 'react'
 import CloseBtn from '../assets/delete_icon.svg'
+import './content.css'
+import FetchData from './FetchData'
+import FormEdit from './FormEdit'
+import ListCard from './ListCard'
+// import ClipLoader from "react-spinners/ClipLoader";
 
 const Content = () => {
 
-  const [dbCopy, setDbCopy] = useState([]);
-  const [editDB, setEditDB] = useState([]);
   const [editStatus, setEditStatus] = useState(false)
+  const [dumpData, setDumpData] = useState([])
 
-  useEffect (()=> {
-    setDbCopy(DBdummy)
-  }, [])
-
-  const delHandle = (id)=> {
-    const delDB = dbCopy.filter(item => item._id !== id)
-    setDbCopy(delDB)
+  const { data } = FetchData('http://localhost:5501/5R2I/todo/')
+   
+  
+  const delHandle = async (id) => {
+    await axios.delete(`http://localhost:5501/5R2I/todo/${id}`)
+    console.log('list todo deleted');
+    window.location.reload();
   }
 
-  const editHandle = (id) => {
+  const editHandle = async (id) => {
     setEditStatus(true)
-    console.log(id, "edit id");
+    try {      
+      const res = await axios.get(`http://localhost:5501/5R2I/todo/${id}`)
+      setDumpData(res.data)
+    } catch (error) {
+      console.log(error);
+    }
+    // getDB => edit form => onChange to editDB => onSubmit setEditDB._id === editDB
   }
 
   return (
-
-      <div className="contentWrapper">
-        { 
-          dbCopy.map((item) => {
+    <div className="contentWrapper">
+      {
+        data.map((item) => {
           return (
-              <ListCard 
-                key={item._id}
-                date={item.date} 
-                todo={item.todo}
-                priority={item.priority} 
-                delHandle={()=> delHandle(item._id)}
-                editHandle={()=> editHandle(item._id)} 
-              />
-            )
-          })
-        }
-        {
-          editStatus ? 
+            <ListCard
+              key={item._id}
+              date={item.dateline}
+              todo={item.todo}
+              priority={item.priority}
+              delHandle={() => delHandle(item._id)}
+              editHandle={() => editHandle(item._id)}
+            />
+          )
+        })
+      }
+      {
+        editStatus ?
+          <div className="editContainer">
             <div className='editModal'>
-              <div className='closeBtn' onClick={()=>setEditStatus(false)}>
+              <div className='closeBtn' onClick={() => setEditStatus(false)}>
                 <img src={CloseBtn} alt="" />
               </div>
-                <div>Modal open</div>
-            </div> : null
-        }
+              <FormEdit dumpData={dumpData} />
+            </div>
+          </div>
+          : null
+      }
 
-      </div>
+    </div>
 
   )
 }
