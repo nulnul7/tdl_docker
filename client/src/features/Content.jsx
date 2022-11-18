@@ -7,6 +7,7 @@ import FormEdit from './FormEdit'
 import ListCard from './ListCard'
 // import ClipLoader from "react-spinners/ClipLoader";
 
+
 const Content = () => {
 
   const [editStatus, setEditStatus] = useState(false)
@@ -62,6 +63,7 @@ const Content = () => {
       }
 
     </div>
+
 
   )
 }
