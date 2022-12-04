@@ -16,7 +16,7 @@ const FormEdit = ( {dumpData} ) => {
             priority: editPriority
         }
         try {
-            await axios.put(`http://localhost:5501/5R2I/todo/update/${id}`, updateTodo)
+            await axios.put(`/5R2I/todo/update/${id}`, updateTodo)
             console.log('update Success');
         } catch (error) {
             console.log(error);

@@ -13,11 +13,10 @@ const Content = () => {
   const [editStatus, setEditStatus] = useState(false)
   const [dumpData, setDumpData] = useState([])
 
-  const { data } = FetchData('http://localhost:5501/5R2I/todo/')
+  const { data } = FetchData('/5R2I/todo/')
    
-  
   const delHandle = async (id) => {
-    await axios.delete(`http://localhost:5501/5R2I/todo/${id}`)
+    await axios.delete(`/5R2I/todo/${id}`)
     console.log('list todo deleted');
     window.location.reload();
   }
@@ -25,7 +24,7 @@ const Content = () => {
   const editHandle = async (id) => {
     setEditStatus(true)
     try {      
-      const res = await axios.get(`http://localhost:5501/5R2I/todo/${id}`)
+      const res = await axios.get(`/5R2I/todo/${id}`)
       setDumpData(res.data)
     } catch (error) {
       console.log(error);

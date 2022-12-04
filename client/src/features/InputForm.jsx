@@ -12,7 +12,7 @@ const InputForm = () => {
             dateline: date, todo, priority
         }
         try {
-            await axios.post('http://localhost:5501/5R2I/todo/add/',  dataTodo )
+            await axios.post('/5R2I/todo/add/',  dataTodo )
             console.log('Submit 123', dataTodo );
 
         } catch (error) {
