@@ -5,17 +5,25 @@ import userRoute from './routes/userRoute.js'
 import todoRoute from './routes/todoRoute.js'
 import cors from 'cors'
 import path from 'path'
+import { fileURLToPath } from 'url';
+
+
+const __filename = fileURLToPath(import.meta.url);
+
+const __dirname = path.dirname(__filename);
 
 const app = express();
 dotenv.config();
-const connectDB = async ()=> {
+const connectDB = async () => {
     try {
         mongoose.connect(process.env.MONGO_URI)
         console.log("CONNECT TO mongoDB");
     } catch (error) {
-        throw(error)
+        throw (error)
     }
 }
+
+connectDB();
 
 // middleware
 app.use(cors());
@@ -31,14 +39,14 @@ app.use("*", (req, res) => {
 
 if (process.env.NODE_ENV === 'production') {
     //set static folder
-    app.use(express.static('client/build'));
-    
-    app.get("*", (req, res) => {
-        res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'))
-    })
+    app.use(express.static(path.join(__dirname, "./client/build")));
+
+
+    app.get("*", function (req, res) {
+        res.sendFile(path.join(__dirname, "./client/build/index.html"));
+    });
 }
 
-app.listen(process.env.PORT || 5501, ()=> {
-    connectDB();
+app.listen(process.env.PORT || 5501, () => {
     console.log("server RUNNING on Port", process.env.PORT);
-})
+});
