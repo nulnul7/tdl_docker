@@ -1,6 +1,7 @@
 import React, {useState} from 'react'
 import './inputForm.css'
 import axios from 'axios';
+import { URL_Ext } from '../Url_Ext';
 
 const InputForm = () => {
     const [date, setDate] = useState('');
@@ -12,7 +13,7 @@ const InputForm = () => {
             dateline: date, todo, priority
         }
         try {
-            await axios.post('/5R2I/todo/add/',  dataTodo )
+            await axios.post(`${URL_Ext}/5R2I/todo/add/`,  dataTodo )
             console.log('Submit 123', dataTodo );
 
         } catch (error) {
