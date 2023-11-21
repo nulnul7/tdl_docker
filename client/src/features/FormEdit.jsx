@@ -1,7 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import './inputForm.css'
-import { URL_Ext } from '../Url_Ext'
+// import { URL_Ext } from '../Url_Ext'
 
 const FormEdit = ( {dumpData} ) => {
 
@@ -17,7 +17,7 @@ const FormEdit = ( {dumpData} ) => {
             priority: editPriority
         }
         try {
-            await axios.put(`${URL_Ext}+/5R2I/todo/update/${id}`, updateTodo)
+            await axios.put(`/todo/update/${id}`, updateTodo)
             console.log('update Success');
         } catch (error) {
             console.log(error);
