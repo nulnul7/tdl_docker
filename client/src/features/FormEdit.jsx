@@ -1,9 +1,9 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import './inputForm.css'
-// import { URL_Ext } from '../Url_Ext'
+import { URL_Ext } from '../Url_Ext'
 
-const FormEdit = ( {dumpData} ) => {
+const FormEdit = ({ dumpData }) => {
 
     const [editDate, setEditDate] = useState(dumpData.dateline)
     const [editTodo, setEditTodo] = useState(dumpData.todo)
@@ -17,12 +17,12 @@ const FormEdit = ( {dumpData} ) => {
             priority: editPriority
         }
         try {
-            await axios.put(`/todo/update/${id}`, updateTodo)
+            await axios.put(`${URL_Ext}/todo/update/${id}`, updateTodo)
             console.log('update Success');
         } catch (error) {
             console.log(error);
         }
-        
+
         e.preventDefault();
         console.log('works hadnle', editDate, editTodo, editPriority);
     }
@@ -62,7 +62,7 @@ const FormEdit = ( {dumpData} ) => {
                                         Yes
                                     </label>
                                     <label className='iRadio'>
-                                        <input type="radio" id='priority' name="priority" value={false} defaultChecked/>
+                                        <input type="radio" id='priority' name="priority" value={false} defaultChecked />
                                         No
                                     </label>
                                 </div>}

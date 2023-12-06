@@ -27,12 +27,12 @@ app.use("/5R2I/todo", todoRoute)
 
 
 app.use("*", (req, res) => {
-    res.json("PAGE NOT FOUND")
+    res.json("PAGE NOT FOUND yo")
 })
 
 
 const PORT = process.env.PORT || 3001;
 
 app.listen(PORT, () => {
-    console.log("server RUNNING on Port :", PORT);
+    console.log("server RUNNING on Port!!! :", PORT);
 });

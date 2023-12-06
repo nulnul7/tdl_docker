@@ -1,6 +1,7 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import './inputForm.css'
 import axios from 'axios';
+import { URL_Ext } from '../Url_Ext';
 
 const InputForm = () => {
     const [date, setDate] = useState('');
@@ -12,8 +13,8 @@ const InputForm = () => {
             dateline: date, todo, priority
         }
         try {
-            await axios.post(`/todo/add/`,  dataTodo )
-            console.log('Submit 123', dataTodo );
+            await axios.post(`${URL_Ext}/todo/add/`, dataTodo)
+            console.log('Submit 123', dataTodo);
 
         } catch (error) {
             console.log(error);
@@ -27,39 +28,39 @@ const InputForm = () => {
         setPriority(true);
     }
 
-  return (
-    <div className='ltdFormContainer'>
-        <div className='ltdWrapper'>
-            <div className='headerForm'>add to do</div>
-            <div className='inputForm'>
-                <form className='ltdForm'>
-                    <div className='iForm'>
-                        <label htmlFor='date'>Date</label>
-                        <input type='text' id='date' name="date" value={date} onChange={(e)=>setDate(e.target.value)} />
-                    </div>
-                    <div className='iForm'>
-                        <label htmlFor='todo'>To Do</label>
-                        <textarea id='todo' name="todo" rows="5" cols="50" value={todo} onChange={(e)=>setTodo(e.target.value)} />
-                    </div>
-                    <div className='iForm' onChange={(e)=>setPriority(e.target.value)}>
-                        <label htmlFor='todo'>Priority</label>
-                        <div className='radioF'>
-                            <label className='iRadio'>
-                            <input type="radio" id='priority' name="priority" value={true}  defaultChecked/>
-                                Yes
-                            </label>
-                            <label className='iRadio'>
-                            <input type="radio" id='priority' name="priority" value={false}  />
-                                No
-                            </label>
+    return (
+        <div className='ltdFormContainer'>
+            <div className='ltdWrapper'>
+                <div className='headerForm'>add to do</div>
+                <div className='inputForm'>
+                    <form className='ltdForm'>
+                        <div className='iForm'>
+                            <label htmlFor='date'>Date</label>
+                            <input type='text' id='date' name="date" value={date} onChange={(e) => setDate(e.target.value)} />
                         </div>
-                    </div>
-                    <button onClick={handleSubmit} className="submitBtn">Submit</button>
-                </form>
+                        <div className='iForm'>
+                            <label htmlFor='todo'>To Do</label>
+                            <textarea id='todo' name="todo" rows="5" cols="50" value={todo} onChange={(e) => setTodo(e.target.value)} />
+                        </div>
+                        <div className='iForm' onChange={(e) => setPriority(e.target.value)}>
+                            <label htmlFor='todo'>Priority</label>
+                            <div className='radioF'>
+                                <label className='iRadio'>
+                                    <input type="radio" id='priority' name="priority" value={true} defaultChecked />
+                                    Yes
+                                </label>
+                                <label className='iRadio'>
+                                    <input type="radio" id='priority' name="priority" value={false} />
+                                    No
+                                </label>
+                            </div>
+                        </div>
+                        <button onClick={handleSubmit} className="submitBtn">Submit</button>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-  )
+    )
 }
 
 export default InputForm

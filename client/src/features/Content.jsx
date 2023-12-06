@@ -5,19 +5,19 @@ import './content.css'
 import FetchData from './FetchData'
 import FormEdit from './FormEdit'
 import ListCard from './ListCard'
-// import {URL_Ext} from '../Url_Ext'
+import { URL_Ext } from '../Url_Ext'
 // import ClipLoader from "react-spinners/ClipLoader";
 
 
 const Content = () => {
-  
+
   const [editStatus, setEditStatus] = useState(false)
   const [dumpData, setDumpData] = useState([])
 
-  const { data } = FetchData(`/todo/`)
-   
+  const { data } = FetchData(`${URL_Ext}/todo/`)
+
   const delHandle = async (id) => {
-    await axios.delete(`/todo/${id}`)
+    await axios.delete(`${URL_Ext}/todo/${id}`)
     console.log('list todo deleted');
     window.location.reload();
   }
@@ -25,8 +25,8 @@ const Content = () => {
   const editHandle = async (id) => {
     setEditStatus(true)
     const getData = async () => {
-      try {      
-        const res = await axios.get(`/todo/${id}`)
+      try {
+        const res = await axios.get(`${URL_Ext}/todo/${id}`)
         const setJson = await res.data
         setDumpData(setJson)
       } catch (error) {
