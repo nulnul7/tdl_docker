@@ -43,14 +43,14 @@ const InputForm = () => {
                             <textarea id='todo' name="todo" rows="5" cols="50" value={todo} onChange={(e) => setTodo(e.target.value)} />
                         </div>
                         <div className='iForm' onChange={(e) => setPriority(e.target.value)}>
-                            <label htmlFor='todo'>Priority</label>
+                            <label>Priority</label>
                             <div className='radioF'>
                                 <label className='iRadio'>
-                                    <input type="radio" id='priority' name="priority" value={true} defaultChecked />
+                                    <input type="radio" name="priority" value={true} defaultChecked />
                                     Yes
                                 </label>
                                 <label className='iRadio'>
-                                    <input type="radio" id='priority' name="priority" value={false} />
+                                    <input type="radio" name="priority" value={false} />
                                     No
                                 </label>
                             </div>
